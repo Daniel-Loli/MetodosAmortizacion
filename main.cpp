@@ -84,14 +84,14 @@ void metodo_usa() {
 
     //Titulo del metodo
     gotoxy(35, 1); printf("............................................\n");
-    gotoxy(35, 2); printf(".            METODO AMERICANO              .\n");
+    gotoxy(35, 2); printf(".            MÉTODO AMERICANO              .\n");
     gotoxy(35, 3); printf("............................................\n");
 
-    float a = 0; //cuota periodica de interÃ©s
+    float a = 0; //cuota periodica de interés
     float a_ultima; //cuota del ultimo año; el Co mas los inetereses
     float tasa_usa; //tasa de interes del periodo
     float capital; //capital inicial prestado (Co)
-    int tiempo; //tiempo en aÃ±o del prestamo
+    int tiempo; //tiempo en años del prestamo
     int i; //contador para el bucle
     int dia, anio; string mes; //Fecha
 
@@ -99,7 +99,7 @@ void metodo_usa() {
         cout << "En que fecha desea realizar el prestamo?\n";
         cout << "Dia: "; cin >> dia;
         cout << "Mes: "; cin >> mes;
-        cout << "Anio: "; cin >> anio;
+        cout << "año: "; cin >> anio;
         cout << endl;
 
     //Ingrea y lee el monto a prestar (Co)
@@ -111,12 +111,12 @@ void metodo_usa() {
             metodo_usa();
         }
 
-    //tiempo en aÃ±os (recordar que el metodo funciona de esta manera, cuota anual)
-        cout << "[#] En cuanto tiempo piensa pagarlo (en aÃ±os): ";
+    //tiempo en años (recordar que el metodo funciona de esta manera, cuota anual)
+        cout << "[#] En cuanto tiempo piensa pagarlo (en años): ";
         cin >> tiempo;
 
     //tasa de interes del periodo anterior
-        cout << "[#] CuÃ¡l serÃ¡ la tasa de interÃ©s?: ";
+        cout << "[#] Cuál será la tasa de interés?: ";
         cin >> tasa_usa;
 
     //Limpiando consola para el proceso de mostrado
@@ -124,7 +124,7 @@ void metodo_usa() {
 
     //Titulo del metodo
         gotoxy(35, 1); printf("............................................\n");
-        gotoxy(35, 2); printf(".            METODO AMERICANO              .\n");
+        gotoxy(35, 2); printf(".            MÉTODO AMERICANO              .\n");
         gotoxy(35, 3); printf("............................................\n");
 
 
@@ -133,7 +133,7 @@ void metodo_usa() {
         cout << dia << " de " << mes << " de " << anio << "\n\n";
 
         gotoxy(14, 7);
-        cout << "Tabla del prestamo a pagar de S/. " << capital << " al " << tasa_usa << "% anual, durante " << tiempo << " anios.\n";
+        cout << "Tabla del préstamo a pagar de S/. " << capital << " al " << tasa_usa << "% anual, durante " << tiempo << " años.\n";
 
     //Mostrando tabla de cotizaciones
     	//Borde  - arriba (top)
@@ -145,7 +145,7 @@ void metodo_usa() {
 		
 		//Menu de muestra
 	    gotoxy(24, 10);
-	    cout << "Anio" << "\t\t" << "Anualidad" << "\t\t" << "Interes" << "\t\t\t" << "Fecha de pago" << endl;
+	    cout << "Año" << "\t\t" << "Anualidad" << "\t\t" << "Interés" << "\t\t" << "Fecha de pago" << endl;
 		
 		//Borde - medio (middle)
 	    gotoxy(14, 12);
@@ -154,18 +154,18 @@ void metodo_usa() {
 	    }
 	    cout << "\n\n";
 		
-		//Informacion sobre la amortizaciÃ³n
+		//Informacion sobre la amortización
 	    for (i = 0; i < tiempo - 1; i++) {
 	        a = capital * tasa_usa/100;
 	
 	        gotoxy(25, 14 + i);
-	        cout << i + 1 << "\t\t" << a << "\t\t\t" << a << "\t\t\t" << anio + i + 1 << endl;
+	        cout << i + 1 << "\t\t" << a << "\t\t\t" << a << "\t\t" << dia << " de " << mes << " de " << anio + i + 1 << endl;
 	    }
 	    
-	    //Ãºltimo periodo de amortizaciÃ³n
+	    //Último periodo de amortización
 	    a_ultima = a + capital;
 	    gotoxy(25, 14 + tiempo - 1);
-	    cout << i + 1 << "   \t\t" << a_ultima << "     \t\t" << a << "\t\t\t" << anio + i + 1 << endl;
+	    cout << i + 1 << "   \t\t" << a_ultima << "     \t\t" << a << "\t\t" << dia << " de " << mes << " de " << anio + i + 1 << endl;
 		
 		//Borde - abajo (bottom)
 	    gotoxy(14, 14 + tiempo + 1);
@@ -436,7 +436,8 @@ void italiano(){
 		gotoxy(i,18+((n+1)*2));
 		cout<<"*";
 	}
-    cout<<"Presione una tecla para regresar: "<<endl;
+	gotoxy(4,20+((n+1)*2));
+    cout<<" > Presione una tecla para regresar: ";
     getch();
     system("cls");
     
@@ -445,7 +446,7 @@ void italiano(){
 // procedimiento para el metodo aleman
 void amortizacionAleman() {
 
- 	//variables previas
+ 	//variables previas 
  float nCuotas;
  float prestamo, tasa;	
  
@@ -476,14 +477,15 @@ else 	{
 	saldo = prestamo;
 	tasa = tasa / 100;
 	amortizacion=saldo/nCuotas;
+	gotoxy(20,5);
 	 cout << "\n  Metodo De Amortizacion Aleman:" << endl; //Nombre del metodo de amortización
 		  cout << "\n  Capital amortizado: " <<amortizacion << endl;
 		  //Titulo de la tabla
 		  cout << "--------------------------------------------------------------\n";
-		  cout << "  PERIODO      CUOTA      INTERES    AMORTIZACION      SALDO\n";
+		  cout << "  PERIODO     CUOTA     INTERES    AMORTIZACION    SALDO\n";
 		  cout << "--------------------------------------------------------------\n";
 		  //Contenido de la tabla
-          cout <<" "<<"   0"<< "     "<<"     ----"<< "       "<<"  ----"<<"        "<<"  ----"<<"         "<<saldo<<endl; 	
+          cout <<" "<<"   0"<< "     "<<"   ----"<< "       "<<"----"<<"        "<<"  ----"<<"        "<<saldo<<endl; 	
 		  //Calculo de lo que está adentro de la tabla
 		  for (int i = 0; i < nCuotas;i++) {
 		    interes = saldo * tasa; 
@@ -502,8 +504,8 @@ else 	{
 //Función Principal
 int main(){
     setlocale(LC_CTYPE,"Spanish");
-    system("color 71");
-    int opcion;	
+    system("color f1");
+    int opcion;
     do{
         system("cls");
         cout<<"\n\n\n\n\n                                   ***************************************"<<endl;
@@ -522,31 +524,32 @@ int main(){
         cout<<"                                   *  Seleccione una opción:             *"<<endl;
         cout<<"                                   *                                     *"<<endl;
         cout<<"                                   ***************************************"<<endl;
-        cin>>opcion;
+        gotoxy(61,18);
+		cin>>opcion;
         switch(opcion){
             case 1:
                 system("cls");
-                system("color 71");
+                system("color f1");
                 amortizacionFrances();
                 break;
             case 2:
                 system("cls");
-                system("color 71");
+                system("color f1");
                 italiano();
                 break;
             case 3:
                 system("cls");
-                system("color 71");
+                system("color f1");
                 amortizacionAleman();
                 break;
             case 4:
                 system("cls");
-                system("color 71");
+                system("color f1");
                 metodo_usa();
                 break;
             case 0:
                 system("cls");
-                system("color 71");
+                system("color f1");
                 cout<<"                         ***************************************"<<endl;
                 cout<<"                         *                                     *"<<endl;
                 cout<<"                         *  Gracias por utilizar el programa   *"<<endl;
@@ -567,4 +570,3 @@ int main(){
     getch();
     return 0;
 }
-
